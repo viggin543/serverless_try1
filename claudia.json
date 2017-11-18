@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "claudia-test-executor",
+    "name": "serverless_articles",
+    "region": "us-east-2"
+  },
+  "api": {
+    "id": "pd2cwpoovh"
+  }
+}
