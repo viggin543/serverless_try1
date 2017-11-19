@@ -1,16 +1,23 @@
-import {MongoClient} from 'mongodb';
+import { MongoClient } from 'mongodb';
 import config from './config';
 
 const {
   mongoHost, mongoPort,
-  mongoUser, mongoPass 
+  mongoUser, mongoPass
 } = config;
 const connectionString = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/storage`;
 
-let db = null;
+let connection = false;
 export const getConnection = async () => {
-  if(!db) {
-    db = await MongoClient.connect(connectionString);
-  }
-  return db;
-};
+  console.log(connectionString);
+  if (connection) return connection;
+
+  connection = await MongoClient.connect(connectionString)
+  .catch(error => {
+    console.log("error blat")
+    console.log(error)}
+  );
+  console.log("banana");
+  return connection;
+
+}

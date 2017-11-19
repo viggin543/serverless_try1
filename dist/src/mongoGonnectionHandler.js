@@ -21,13 +21,18 @@ const {
 } = _config2.default;
 const connectionString = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/storage`;
 
-let db = null;
+let connection = false;
 const getConnection = exports.getConnection = (() => {
   var _ref = _asyncToGenerator(function* () {
-    if (!db) {
-      db = yield _mongodb.MongoClient.connect(connectionString);
-    }
-    return db;
+    console.log(connectionString);
+    if (connection) return connection;
+
+    connection = yield _mongodb.MongoClient.connect(connectionString).catch(function (error) {
+      console.log("error blat");
+      console.log(error);
+    });
+    console.log("banana");
+    return connection;
   });
 
   return function getConnection() {

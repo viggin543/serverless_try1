@@ -4,7 +4,7 @@
   "description": "claudiajs serverless api backend",
   "main": "lambda.js",
   "scripts": {
-    "publish": "babel src/* -d dist/ && "
+    "publish": "babel src/* -d dist/ && claudia update --set-env mongoHost=ds163494.mlab.com,mongoPort=63494,mongoUser=dev,mongoPass=12345678"
   },
   "author": "",
   "license": "ISC",
@@ -12,7 +12,8 @@
     "aws-serverless-express": "^3.0.2",
     "express": "^4.16.2",
     "formidable": "^1.1.1",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

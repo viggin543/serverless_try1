@@ -10,7 +10,7 @@ var _formidable = require('formidable');
 
 var _mongoGonnectionHandler = require('./mongoGonnectionHandler');
 
-var _mongoGonnectionHandler2 = _interopRequireDefault(_mongoGonnectionHandler);
+var _uuid = require('uuid');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 	res.append('Access-Control-Allow-Origin', ['*']);
 	next();
 }).get('/banana', (req, res) => {
+	console.log("this is so fun !!");
 	res.send(JSON.stringify({ banana: "this is fun !" }));
 }).get('/tapuz', (req, res) => {
 	res.send(JSON.stringify({ banana: "life is shit and then you die ! " }));
@@ -30,12 +31,14 @@ app.use((req, res, next) => {
 	form.parse(req, (() => {
 		var _ref = _asyncToGenerator(function* (err, fields, files) {
 			res.writeHead(200, { 'content-type': 'application/json' });
-			const db = yield (0, _mongoGonnectionHandler2.default)();
-			db.collection('articales').insert(_extends({}, fields, {
-				id: v1(),
-				authorId: v1(),
+			let db = yield (0, _mongoGonnectionHandler.getConnection)();
+			yield db.collection('articales').insert(_extends({}, fields, {
+				id: (0, _uuid.v1)(),
+				authorId: (0, _uuid.v1)(),
 				date: new Date()
-			}));
+			})).catch(function (e) {
+				return console.log(e);
+			});
 			res.end();
 		});
 
