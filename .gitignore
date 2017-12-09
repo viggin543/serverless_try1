@@ -1,2 +1,4 @@
 node_modules
 cmds.bash
+_test_
+dist
