@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import {Db, MongoClient} from 'mongodb';
 import config from './config';
 
 const {
@@ -7,17 +7,17 @@ const {
 } = config;
 const connectionString = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/storage`;
 
-let connection = false;
-export const getConnection = async () => {
-  console.log(connectionString);
-  if (connection) return connection;
+let conn : Db  = false;
+export const getConnection  = async ()  => {
+  console.log("connecting to db...");
+  if (conn) return conn;
 
-  connection = await MongoClient.connect(connectionString)
+  conn = await MongoClient.connect(connectionString)
   .catch(error => {
     console.log("error blat")
     console.log(error)}
   );
   console.log("banana");
-  return connection;
+  return conn;
 
-}
+};
