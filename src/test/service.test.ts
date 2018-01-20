@@ -1,11 +1,18 @@
-import { app } from '../service'
-import * as expect from 'expect'
+const app = require('../service');
+import * as expect from 'expect';
+import fetch from "node-fetch";
+import * as http from "http";
+
 
 describe("serverless lambda backend", () => {
 
-  it('/banana should return : "this is fun!"', () => {
+  let server : http.Server;
+  beforeEach(() => server = app.listen(8879));
+  afterEach(() =>  server.close() );
+  it('/banana should return : "this is fun!"', async () => {
 
-    expect(1).toEqual(1);
+    const res = await fetch("http://localhost:8879/tapuz");
+    expect(await res.json()).toEqual(  {"banana": "life is shit and then you die ! "});
 
   })
 });
