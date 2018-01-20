@@ -4,7 +4,9 @@
   "description": "claudiajs serverless api backend",
   "main": "lambda.js",
   "scripts": {
-    "publish": "babel src/* -d dist/ && claudia update --set-env mongoHost=ds163494.mlab.com,mongoPort=63494,mongoUser=dev,mongoPass=12345678",
+    "compile": "tsc",
+    "clean": "rm -rf dist/src/*",
+    "publish": "rm -rf dist/src/* && tsc || claudia update --set-env mongoHost=ds163494.mlab.com,mongoPort=63494,mongoUser=dev,mongoPass=12345678",
     "test": "rm -rf _test_; babel src/*  test/* -d _test_/; ln -s `pwd`/node_modules _test_/; mocha _test_/*"
   },
   "author": "",
@@ -17,16 +19,19 @@
     "express": "^4.16.2",
     "formidable": "^1.1.1",
     "mongodb": "^2.2.33",
+    "requirejs": "^2.3.5",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "@types/mongodb": "^3.0.3",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-node6": "^11.0.0",
     "chai": "^4.1.2",
+    "eslint": "^4.15.0",
     "expect": "^21.2.1",
     "mocha": "^4.0.1"
   }
