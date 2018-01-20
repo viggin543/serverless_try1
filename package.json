@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "clean": "rm -rf dist/src/*",
-    "publish": "rm -rf dist/src/* && tsc || claudia update --set-env mongoHost=ds163494.mlab.com,mongoPort=63494,mongoUser=dev,mongoPass=12345678",
+    "publish": "rm -rf dist && tsc || claudia update --set-env mongoHost=ds163494.mlab.com,mongoPort=63494,mongoUser=dev,mongoPass=12345678",
     "test": "rm -rf dist && tsc || mocha dist/test/*.js"
   },
   "author": "",
