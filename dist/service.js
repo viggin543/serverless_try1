@@ -54,7 +54,6 @@ exports.app.use(function (req, res, next) {
     next();
 })
     .get('/banana', function (req, res) {
-    console.log("this is so fun !!");
     res.send(JSON.stringify({ banana: "this is fun !" }));
 })
     .get('/tapuz', function (req, res) {
@@ -96,5 +95,4 @@ exports.app.use(function (req, res, next) {
         });
     }); });
 });
-module.exports = exports.app;
 //# sourceMappingURL=service.js.map

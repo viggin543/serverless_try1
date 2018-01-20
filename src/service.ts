@@ -10,8 +10,6 @@ app.use((req, res, next) => {
 	next();
 })
 	.get('/banana', (req, res) => {
-		console.log("this is so fun !!")
-
 		res.send(JSON.stringify({ banana: "this is fun !" }));
   })
 	.get('/tapuz', (req, res) => {
@@ -39,4 +37,3 @@ app.use((req, res, next) => {
 			res.end();
 		});
 	});
-module.exports = app;
