@@ -1,5 +1,5 @@
-import { app } from '../src/service'
-import expect from 'expect'
+import { app } from '../service'
+import * as expect from 'expect'
 
 describe("serverless lambda backend", () => {
 

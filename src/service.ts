@@ -2,7 +2,7 @@ import * as express from 'express';
 import { IncomingForm } from 'formidable';
 import {getConnection} from './mongoGonnectionHandler'
 import {v1} from 'uuid';
-const app = express();
+export const app = express();
 
 
 app.use((req, res, next) => {
