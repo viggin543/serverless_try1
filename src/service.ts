@@ -19,14 +19,14 @@ app.use((req, res, next) => {
   })
   .get('/data', async (req, res) => {
   	  const db   = await getConnection();
-      const data = await db.collection('articales')
-      .find({},{limit: 10}).toArray();
-      res.send(data);
+      res.send(await db.collection('articales')
+      .find({},{limit: 10}).toArray());
       
   })
 	.post('/article', (req, res) => {
 		var form = new IncomingForm();
-		form.parse(req, async (err, fields, files) => {
+		form.parse(req, async (
+			err, fields, files) => {
 			res.writeHead(200, { 'content-type': 'application/json' });
       let db = await getConnection();
       
