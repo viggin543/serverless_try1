@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/mongodb": "^3.0.3",
+    "@types/node": "^9.3.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
