@@ -16,10 +16,14 @@ app.use((req, res, next) => {
     .get('/tapuz', (req, res) => {
         res.send(JSON.stringify({banana: "life is shit and then you die ! "}));
     })
+    .get('nu', (req, res) => res.send("ok boss..."))
     .get('/data', async (req, res) => {
         const db = await getConnection();
-        res.send(await db.collection('articales')
-            .find({}, {limit: 10}).toArray());
+        let articles = await db.collection('articales')
+            .find({}, {limit: 10}).toArray();
+        let authors = await db.collection('authors')
+            .find({}, {limit: 10}).toArray();
+        res.send({data: {articles, authors}});
 
     })
     .post('/article', (req, res) => {
