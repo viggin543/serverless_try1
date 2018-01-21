@@ -35,7 +35,7 @@ app.use((req, res, next) => {
             await db.collection('articales').insert({
                 ...fields,
                 id: v1(),
-                authorId: v1(),
+                authorId: "d85577ea34ae50f2dac5347b5219aa23",
                 date: new Date()
             }).catch(e => console.log(e));
             res.end();
